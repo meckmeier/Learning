@@ -1,3 +1,4 @@
+// this script needs to be integrated with the standard script file but for now there are duplicates to this.
 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSfRzvWLQ6Qz-Irb_cOY_5cDZkgY6LQYTVIfdo2tdGNqH50eNuhaFCcFZAZREipNLVSzrZFm6S-zILM/pub?output=csv"
 
 let data = [];
@@ -251,3 +252,4 @@ Papa.parse(csvUrl, {
   
   }
 });
+
