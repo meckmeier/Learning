@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta description="tool to help Wisconsin Master Naturalists find volunteer opportunities.">
+
+        <title>WI Master Naturalist</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/customParseFormat.js"></script>
+        <script>  dayjs.extend(window.dayjs_plugin_customParseFormat);</script>
+    </head>
+
+    <body>
+        <header>
+            <img src="images/wisconsin-master-naturalist.svg" alt="Wisconsin Master Naturalist" style="width:150px">
+             <nav>
+                <a href="index.html">Volunteer Organizations</a>
+                <a href="https://wimasternaturalist.org/" target="_blank">Master Naturalist home</a>
+                <!-- <button id="filterToggle">☰ Filter</button>  -->
+                <button id="cardViewBtn">Card View</button>
+                <button id="mapViewBtn">Map View</button>
+                <button id="calViewBtn">Calendar View</button>
+            </nav>
+        </header>
+        <aside class="sidebar">
+           
+        </aside>
+        <main>
+           <h1>Volunteer Training</h1>
+            <div class="wrapper">
+                <div id = "sidebarView" class="sidebar">
+                     <h2>Filter</h2>
+                        <label>
+                            Region:
+                            <select id="regionFilter">
+                            <option value="all">All</option>
+                            </select>
+                        </label>
+                        <label>
+                            County:
+                            <select id="countyFilter">
+                            <option value="all">All</option>
+                            </select>
+                        </label>
+                </div>
+                <div id="cardView" class="card-view"></div>
+                <div id="mapView" class="map-view hidden">
+                    <div id="map"></div>
+                </div>
+                <div id="calView" class="calendar-view hidden">
+                    <div id="calendar"></div>
+                    </div>
+            </div>
+        </main>
+        <script src="trainingscript.js"></script>
+    </body>
+</html>
