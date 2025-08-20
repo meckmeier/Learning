@@ -1,4 +1,5 @@
 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ2Mbay1-b4cCmb6dMT8yVAPEI8HApC25epWiqQIk1_43FcSlOfvucowCkVfS_wxX0PWtBgETb17Pk0/pub?output=csv";
+const csvUrlTrn = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSfRzvWLQ6Qz-Irb_cOY_5cDZkgY6LQYTVIfdo2tdGNqH50eNuhaFCcFZAZREipNLVSzrZFm6S-zILM/pub?output=csv"
 
 let data = [];
 let map;
@@ -6,18 +7,32 @@ let markers = [];
 
 const cardView = document.getElementById("cardView");
 const mapView = document.getElementById("mapView");
+const calView = document.getElementById("calView");
 const cardViewBtn = document.getElementById("cardViewBtn");
 const mapViewBtn = document.getElementById("mapViewBtn");
+const calViewBtn = document.getElementById("calViewBtn");
+const closeFilterBtn = document.getElementById("closeFilterBtn");
 const regionFilter = document.getElementById("regionFilter");
 const countyFilter = document.getElementById("countyFilter");
 
-//const filterToggle = document.getElementById("filterToggle");
+const filterBtn = document.getElementById("filterBtn");
 const sidebar = document.querySelector(".sidebar");
+const wrapper = document.querySelector(".wrapper");
+const filters = document.getElementById("sidebarView");
 
-//filterToggle.onclick = () => {
-  //sidebar.classList.toggle("show");
-  
-//};
+filterBtn.addEventListener("click", () => {
+  if (window.innerWidth > 768) {
+    // Desktop: collapse column
+    wrapper.classList.toggle("hide-filters");
+  } else {
+    // Mobile: slide overlay
+    filters.classList.toggle("active");
+  }
+});
+
+closeFilterBtn.addEventListener("click", () => {
+  filters.classList.remove("active");
+});
 
 cardViewBtn.onclick = () => {
   cardView.classList.remove("hidden");
@@ -125,6 +140,7 @@ function applyFilters() {
 regionFilter.onchange = applyFilters;
 countyFilter.onchange = applyFilters;
 
+
 Papa.parse(csvUrl, {
   download: true,
   header: true,
@@ -135,3 +151,6 @@ Papa.parse(csvUrl, {
     renderCards(data);
   }
 });
+
+
+

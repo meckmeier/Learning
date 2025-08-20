@@ -21,21 +21,20 @@
         <header>
             <img src="images/wisconsin-master-naturalist.svg" alt="Wisconsin Master Naturalist" style="width:150px">
              <nav>
-                <a href="training_index.html">Training</a>
-                <a href="https://wimasternaturalist.org/" target="_blank">Master Naturalist home</a>
-                <!--<button id="filterToggle">☰ Filter</button> --> 
+                <button onclick="window.location.href='training_index.html';">Training</a></button>
+                <button id="filterBtn">☰ Filter</button> 
                 <button id="cardViewBtn">Card View</button>
                 <button id="mapViewBtn">Map View</button>
                 <!-- <button id="calViewBtn">Calendar View</button> -->
+                 <a href="https://wimasternaturalist.org/" target="_blank">Master Naturalist home</a>
             </nav>
         </header>
-        <aside class="sidebar">
-           
-        </aside>
+
         <main>
            <h1>Volunteer Organizations</h1>
             <div class="wrapper">
-                <div id = "sidebarView" class="sidebar">
+                <div id = "sidebarView" class="sidebar filters">
+                    <button id="closeFilterBtn" class="close-btn">&times;</button>
                      <h2>Filter</h2>
                         <label>
                             Region:

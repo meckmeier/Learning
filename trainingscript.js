@@ -12,24 +12,23 @@ const mapViewBtn = document.getElementById("mapViewBtn");
 const calViewBtn = document.getElementById("calViewBtn")
 const regionFilter = document.getElementById("regionFilter");
 const countyFilter = document.getElementById("countyFilter");
+const filterBtn = document.getElementById("filterBtn");
 
-//const filterToggle = document.getElementById("filterToggle");
 const sidebar = document.querySelector(".sidebar");
 
 document.addEventListener("DOMContentLoaded", () => {
    window.dispatchEvent(new Event('resize'));
 });
 
-
-//filterToggle.onclick = () => {
-  //sidebar.classList.toggle("show");
-  
-//};
+filterBtn.onclick = () => {
+  document.querySelector(".wrapper").classList.toggle("hide-filters");
+};
 
 calViewBtn.onclick = () => {
   cardView.classList.add("hidden");
   mapView.classList.add("hidden");
   calView.classList.remove("hidden");
+  document.getElementById("calendar").updateSize()
 
 };
 
@@ -109,6 +108,8 @@ function renderCards(filteredData) {
 */
 
 function renderCalendar(filteredData) {
+  calView.classList.remove("hidden");  // show container
+
   const events = filteredData.map(row => {
     const badValues = ["self-paced", "multiple", "sundays"];
     const dateText = (row.Date || "").toLowerCase();
@@ -139,22 +140,21 @@ function renderCalendar(filteredData) {
   .filter(evt => evt); // keep only valid
 
   // Render FullCalendar
-  const calendarEl = document.getElementById("calendar");
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: "dayGridMonth",
-    events: events,
-    eventClick: function(info) {
-      alert(info.event.title + "\n" + info.event.extendedProps.description);
-    }
-  });
+  
+    const calendarEl = document.getElementById("calendar");
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: "dayGridMonth",
+      events: events,
+      eventClick: function(info) {
+        alert(info.event.title + "\n" + info.event.extendedProps.description);
+      }
+    });
 
   calendar.render();
-  
-  setTimeout(() => {
+ 
+    // if already initialized, just resize
     calendar.updateSize();
-  }, 1000); // 50ms usually enough
-  
-    window.dispatchEvent(new Event('resize'));
+   
 
 }
 
