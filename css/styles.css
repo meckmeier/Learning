@@ -66,6 +66,8 @@ h3{
   padding: 1rem;
   overflow: hidden;
   transition: transform 0.3s ease; /* slide effect */
+  position: relative;
+  display: block;
 }
 
 .sidebar h2 {
@@ -84,7 +86,6 @@ h3{
 
 .sidebar button {
   margin-top: 10px;
-  width: 100%;
   padding: 10px;
   cursor: pointer;
 }
@@ -107,11 +108,22 @@ h3{
   border-radius: 8px;
   border-top: black solid 1px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display:grid;
+  display: grid;
   gap: 60px;
-  grid-template-columns: 1fr 3fr;   
+  grid-template-columns: 1fr 3fr;
+  min-width: 0;
 }
 
+.card .col2 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
+}
+
+.card .col1 {
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
+}
 .card h3 {
   margin-top: 0;
 }
@@ -131,6 +143,7 @@ h3{
 
 #calView {
   height: 600px;  /* or flex/100% if filling parent */
+  width: 726px;
 }
 
 #calendar {
@@ -138,7 +151,7 @@ h3{
   height: 100%;
 }
  
-#filterBtn {
+button {
   display: inline-block;
   margin-bottom: 1rem;
   padding: 0.5rem 1rem;
@@ -150,16 +163,20 @@ h3{
 }
 
 .close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #333;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1100;
+  top: 0.5rem;
+  right: 0.5rem;
+  
+  display: inline-block;   /* prevents full-width stretching */
+  width: fit-content;             /* reset width */
+  
+  border: none;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1;
+  cursor: pointer;
 }
+
 
 .hidden{
     display: none;
@@ -190,6 +207,7 @@ h3{
     z-index: 0;
     padding: 1rem;
   }
+
 
   /* close button always above */
   .close-btn {
